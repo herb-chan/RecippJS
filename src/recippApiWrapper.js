@@ -109,13 +109,20 @@ class RecippApiWrapper {
     }
 
     /**
+     * @typedef {Object} StarRecipeResponse
+     * @property {string} message A success message indicating the recipe has been starred.
+     * @property {number} starCount The updated number of stars for the recipe.
+     */
+
+    /**
      * Stars a recipe by its ID.
      * @async
      * @param {number} id - The recipe ID.
-     * @returns {Promise<Object>} The updated star count.
+     * @returns {Promise<StarRecipeResponse>} The response containing a success message and the updated star count.
+     * @throws {Error} If the request fails.
      * @example
      * const response = await Recipp.starRecipe(1);
-     * console.log(response.starCount);
+     * console.log(`Recipe 1 has ${response.starCount} stars.`);
      */
     async starRecipe(id) {
         const data = await this.request("post", `/recipes/${id}/star`);
