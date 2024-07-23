@@ -1,0 +1,20 @@
+{
+    "name": "recipp-js",
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "An official API wrapper for Recipp API",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "api",
+        "axios",
+        "wrapper",
+        "recipp"
+    ],
+    "author": "herb",
+    "license": "MIT",
+    "dependencies": {
+        "axios": "^1.7.2"
+    }
+}
