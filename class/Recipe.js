@@ -4,6 +4,20 @@
  */
 class Recipe {
     /**
+     * @typedef {Object} Nutrition
+     * @property {number} calories The number of calories.
+     * @property {string} protein The amount of protein.
+     * @property {string} fat The amount of fat.
+     * @property {string} carbs The amount of carbohydrates.
+     */
+
+    /**
+     * @typedef {Object} Ingredient
+     * @property {string} name The name of the ingredient.
+     * @property {string} quantity The quantity of the ingredient.
+     */
+
+    /**
      * Creates a new Recipe instance.
      * @param {Object} recipeData - The data for the recipe.
      * @param {number} recipeData.id - The unique ID of the recipe.
@@ -16,6 +30,9 @@ class Recipe {
      * @param {string[]} recipeData.steps - The steps required to prepare the recipe.
      * @param {string[]} recipeData.allergies - A list of allergies that the recipe may contain.
      * @param {string[]} recipeData.diets - A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
+     * @param {Ingredient[]} recipeData.ingredients - A list of ingredients with quantities.
+     * @param {Nutrition} recipeData.nutrition - Nutritional information.
+     * @param {number} recipeData.starCount - The number of stars the recipe has received.
      * @param {Date} recipeData.createdAt - The date when the recipe was created.
      * @param {Date} recipeData.updatedAt - The date when the recipe was last updated.
      * @example
@@ -35,6 +52,19 @@ class Recipe {
      *   ],
      *   allergies: ["Eggs", "Dairy"],
      *   diets: ["Vegetarian"],
+     *   ingredients: [
+     *     { name: "Spaghetti", quantity: "200g" },
+     *     { name: "Eggs", quantity: "2" },
+     *     { name: "Pancetta", quantity: "100g" },
+     *     { name: "Parmesan Cheese", quantity: "50g" },
+     *   ],
+     *   nutrition: {
+     *     calories: 500,
+     *     protein: "20g",
+     *     fat: "25g",
+     *     carbs: "50g"
+     *   },
+     *   starCount: 0,
      *   createdAt: new Date(),
      *   updatedAt: new Date()
      * };
@@ -151,7 +181,7 @@ class Recipe {
      * console.log(diets);
      */
     diets() {
-        return this.recipeData.diets;
+        return this.recipeData.diets();
     }
 
     /**
@@ -163,6 +193,32 @@ class Recipe {
      */
     starCount() {
         return this.recipeData.starCount;
+    }
+
+    /**
+     * Get the ingredients for the recipe.
+     * @returns {Ingredient[]} The ingredients.
+     * @example
+     * const ingredients = recipe.ingredients();
+     * ingredients.forEach((ingredient) => {
+     *     console.log(ingredient.name, ingredient.quantity);
+     * });
+     */
+    ingredients() {
+        return this.recipeData.ingredients;
+    }
+
+    /**
+     * Get the nutrition information for the recipe.
+     * @returns {Nutrition} The nutrition information.
+     * @example
+     * const nutrition = recipe.nutrition();
+     * console.log(nutrition.fat);
+     * console.log(nutrition.carbs);
+     * console.log(nutrition.protein);
+     */
+    nutrition() {
+        return this.recipeData.nutrition;
     }
 
     /**
@@ -184,7 +240,7 @@ class Recipe {
      * console.log(updatedAt);
      */
     updatedAt() {
-        return this.recipeData.updatedAt;
+        return this.recipeData.updatedAt();
     }
 }
 
