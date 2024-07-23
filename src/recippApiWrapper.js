@@ -1,5 +1,6 @@
 const axios = require("axios");
 const Recipe = require("../class/Recipe");
+const RecipeArray = require("../class/RecipeArray"); // Import the custom array class
 
 /**
  * A wrapper for the Recipp API.
@@ -75,7 +76,9 @@ class RecippApiWrapper {
      */
     async getAllRecipes() {
         const data = await this.request("get", "/recipes");
-        return data.map((recipeData) => new Recipe(recipeData));
+        return new RecipeArray(
+            ...data.map((recipeData) => new Recipe(recipeData))
+        );
     }
 
     /**
@@ -105,7 +108,9 @@ class RecippApiWrapper {
      */
     async searchRecipes(query) {
         const data = await this.request("get", `/search`, { q: query });
-        return data.map((recipeData) => new Recipe(recipeData));
+        return new RecipeArray(
+            ...data.map((recipeData) => new Recipe(recipeData))
+        );
     }
 
     /**
