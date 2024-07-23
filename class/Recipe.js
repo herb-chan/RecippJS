@@ -155,6 +155,17 @@ class Recipe {
     }
 
     /**
+     * Get the star count of the recipe.
+     * @returns {number} The star count.
+     * @example
+     * const starCount = recipe.starCount();
+     * console.log(starCount);
+     */
+    starCount() {
+        return this.recipeData.starCount;
+    }
+
+    /**
      * Get the creation date of the recipe.
      * @returns {Date} The creation date.
      * @example
