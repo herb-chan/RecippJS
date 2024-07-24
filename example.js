@@ -16,6 +16,24 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
         `Title: ${recipe.title()}, Preparation Time: ${recipe.preparationTime()} minutes`
     );
 
+    // Display nutrition information for a specific recipe
+    console.log("\n=== Nutrition Information ===");
+    console.log(
+        `Fat: ${recipe.nutrition().fat}, Carbs: ${
+            recipe.nutrition().carbs
+        }, Calories: ${recipe.nutrition().calories}, Protein: ${
+            recipe.nutrition().protein
+        }`
+    );
+
+    // Display ingredients for a specific recipe
+    console.log("\n=== Ingredients ===");
+    recipe.ingredients().forEach((ingredient) => {
+        console.log(
+            `Name: ${ingredient.name}, Quantity: ${ingredient.quantity}`
+        );
+    });
+
     // Search for recipes
     console.log("\n=== Search Recipes ===");
     const searchResults = await Recipp.searchRecipes("Chicken");
@@ -32,7 +50,7 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
 
     // Sort search results by preparation time
     console.log("\n=== Sorted by Preparation Time ===");
-    allRecipes.sortByPreparationTime();
+    allRecipes.sortByPreparationTime("asc");
     allRecipes.forEach((recipe) => {
         console.log(
             `${recipe.title()} - Preparation Time: ${recipe.preparationTime()} minutes`

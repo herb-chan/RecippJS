@@ -67,7 +67,7 @@ class RecippApiWrapper {
     /**
      * Retrieves all recipes.
      * @async
-     * @returns {Promise<Recipe[]>} A list of all recipes.
+     * @returns {Promise<RecipeArray>} A list of all recipes.
      * @example
      * const recipes = await Recipp.getAllRecipes();
      * recipes.forEach(recipe => {
@@ -99,7 +99,7 @@ class RecippApiWrapper {
      * Searches for recipes by a query.
      * @async
      * @param {string} query - The search query.
-     * @returns {Promise<Recipe[]>} A list of recipes that match the query.
+     * @returns {Promise<RecipeArray>} A list of recipes that match the query.
      * @example
      * const searchResults = await Recipp.searchRecipes("Chicken");
      * searchResults.forEach(recipe => {
