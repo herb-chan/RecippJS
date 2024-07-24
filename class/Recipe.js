@@ -181,7 +181,7 @@ class Recipe {
      * console.log(diets);
      */
     diets() {
-        return this.recipeData.diets();
+        return this.recipeData.diets;
     }
 
     /**

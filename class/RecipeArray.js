@@ -47,6 +47,21 @@ class RecipeArray extends Array {
             })
         );
     }
+
+    /**
+     * Sort recipes by the amount of ingredients.
+     * @param {string} [order='asc'] - The order to sort ('asc' for ascending, 'desc' for descending).
+     * @returns {RecipeArray} The sorted array.
+     */
+    sortByIngredientsAmount(order = "asc") {
+        return /** @type {RecipeArray} */ (
+            this.sort((a, b) => {
+                const comparison =
+                    a.ingredients().length - b.ingredients().length;
+                return order === "desc" ? -comparison : comparison;
+            })
+        );
+    }
 }
 
 module.exports = RecipeArray;

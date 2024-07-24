@@ -64,6 +64,17 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
         console.log(`${recipe.title()} - Star Count: ${recipe.starCount()}`);
     });
 
+    // Sort search results by the amount of ingredients
+    console.log("\n=== Sorted by the Amount of Ingredients ===");
+    allRecipes.sortByIngredientsAmount();
+    allRecipes.forEach((recipe) => {
+        console.log(
+            `${recipe.title()} - Ingredients amount: ${
+                recipe.ingredients().length
+            }`
+        );
+    });
+
     // Star a recipe
     console.log("\n=== Star a Recipe ===");
     const starResponse = await Recipp.starRecipe(4);
