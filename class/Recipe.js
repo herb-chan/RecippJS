@@ -240,7 +240,7 @@ class Recipe {
      * console.log(updatedAt);
      */
     updatedAt() {
-        return this.recipeData.updatedAt();
+        return this.recipeData.updatedAt;
     }
 }
 
