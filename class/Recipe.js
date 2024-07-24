@@ -1,5 +1,3 @@
-const AmountWrapper = require("./AmountWrapper");
-
 /**
  * Represents a Recipe.
  * @class
@@ -166,35 +164,48 @@ class Recipe {
 
     /**
      * Get the allergies information for the recipe.
-     * @returns {AmountWrapper} Wrapped allergies with an `amount` method.
+     * @returns {string[]} The allergies information.
      * @example
      * const allergies = recipe.allergies();
-     * console.log(allergies.amount());
+     * console.log(allergies);
      */
     allergies() {
-        return new AmountWrapper(this.recipeData.allergies);
+        return this.recipeData.allergies;
     }
 
     /**
-     * Get the diets of the recipe.
-     * @returns {AmountWrapper} Wrapped diets with an `amount` method.
+     * Get the diets information for the recipe.
+     * @returns {string[]} The diets information.
      * @example
      * const diets = recipe.diets();
-     * console.log(diets.amount());
+     * console.log(diets);
      */
     diets() {
-        return new AmountWrapper(this.recipeData.diets);
+        return this.recipeData.diets;
+    }
+
+    /**
+     * Get the star count of the recipe.
+     * @returns {number} The star count.
+     * @example
+     * const starCount = recipe.starCount();
+     * console.log(starCount);
+     */
+    starCount() {
+        return this.recipeData.starCount;
     }
 
     /**
      * Get the ingredients for the recipe.
-     * @returns {AmountWrapper} Wrapped ingredients with an `amount` method.
+     * @returns {Ingredient[]} The ingredients.
      * @example
      * const ingredients = recipe.ingredients();
-     * console.log(ingredients.amount());
+     * ingredients.forEach((ingredient) => {
+     *     console.log(ingredient.name, ingredient.quantity);
+     * });
      */
     ingredients() {
-        return new AmountWrapper(this.recipeData.ingredients);
+        return this.recipeData.ingredients;
     }
 
     /**
@@ -208,17 +219,6 @@ class Recipe {
      */
     nutrition() {
         return this.recipeData.nutrition;
-    }
-
-    /**
-     * Get the star count of the recipe.
-     * @returns {number} The star count.
-     * @example
-     * const starCount = recipe.starCount();
-     * console.log(starCount);
-     */
-    starCount() {
-        return this.recipeData.starCount;
     }
 
     /**

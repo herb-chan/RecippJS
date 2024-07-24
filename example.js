@@ -75,6 +75,22 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
         );
     });
 
+    // Sort recipes by the amount of diets they are suitable for
+    console.log("\n=== Sorted by the Amount of Diets ===");
+    allRecipes.sortByDietsAmount();
+    allRecipes.forEach((recipe) => {
+        console.log(`${recipe.title()} - Diets amount: ${recipe.diets()}`);
+    });
+
+    // Sort recipes by the amount of allergies they might cause
+    console.log("\n=== Sorted by the Amount of Allergies ===");
+    allRecipes.sortByAllergiesAmount();
+    allRecipes.forEach((recipe) => {
+        console.log(
+            `${recipe.title()} - Ingredients amount: ${recipe.allergies()}`
+        );
+    });
+
     // Star a recipe
     console.log("\n=== Star a Recipe ===");
     const starResponse = await Recipp.starRecipe(4);
