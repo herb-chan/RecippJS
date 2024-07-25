@@ -90,6 +90,35 @@ class RecipeArray extends Array {
             })
         );
     }
+
+    /**
+     * Sort recipes by the amount of calories they have.
+     * @param {string} [order='asc']
+     * @returns {RecipeArray} The sorted array.
+     */
+    sortByCaloriesAmount(order = "asc") {
+        return /** @type {RecipeArray} */ (
+            this.sort((a, b) => {
+                const comparison =
+                    a.nutrition().calories - b.nutrition().calories;
+                return order === "desc" ? -comparison : comparison;
+            })
+        );
+    }
+
+    /**
+     * Sort recipes by the amount of steps they have.
+     * @param {string} [order='asc']
+     * @returns {RecipeArray} The sorted array.
+     */
+    sortByStepsAmount(order = "asc") {
+        return /** @type {RecipeArray} */ (
+            this.sort((a, b) => {
+                const comparison = a.steps().length - b.steps().length;
+                return order === "desc" ? -comparison : comparison;
+            })
+        );
+    }
 }
 
 module.exports = RecipeArray;
