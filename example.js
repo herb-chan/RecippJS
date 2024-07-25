@@ -79,7 +79,9 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
     console.log("\n=== Sorted by the Amount of Diets ===");
     allRecipes.sortByDietsAmount();
     allRecipes.forEach((recipe) => {
-        console.log(`${recipe.title()} - Diets amount: ${recipe.diets()}`);
+        console.log(
+            `${recipe.title()} - Diets amount: ${recipe.diets().length}`
+        );
     });
 
     // Sort recipes by the amount of allergies they might cause
@@ -87,7 +89,9 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
     allRecipes.sortByAllergiesAmount();
     allRecipes.forEach((recipe) => {
         console.log(
-            `${recipe.title()} - Ingredients amount: ${recipe.allergies()}`
+            `${recipe.title()} - Ingredients amount: ${
+                recipe.allergies().length
+            }`
         );
     });
 

@@ -4,6 +4,18 @@
  */
 class Recipe {
     /**
+     * @typedef {Object} Diets
+     */
+
+    /**
+     * @typedef {Object} Allergies
+     */
+
+    /**
+     * @typedef {Object} Steps
+     */
+
+    /**
      * @typedef {Object} Nutrition
      * @property {number} calories The number of calories.
      * @property {string} protein The amount of protein.
@@ -27,9 +39,9 @@ class Recipe {
      * @param {number} recipeData.prepTime - The preparation time in minutes.
      * @param {number} recipeData.servingSize - The number of servings the recipe makes.
      * @param {string} recipeData.category - The category or type of the recipe (e.g., dessert, main course).
-     * @param {string[]} recipeData.steps - The steps required to prepare the recipe.
-     * @param {string[]} recipeData.allergies - A list of allergies that the recipe may contain.
-     * @param {string[]} recipeData.diets - A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
+     * @param {Steps[]} recipeData.steps - The steps required to prepare the recipe.
+     * @param {Allergies[]} recipeData.allergies - A list of allergies that the recipe may contain.
+     * @param {Diets[]} recipeData.diets - A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
      * @param {Ingredient[]} recipeData.ingredients - A list of ingredients with quantities.
      * @param {Nutrition} recipeData.nutrition - Nutritional information.
      * @param {number} recipeData.starCount - The number of stars the recipe has received.
@@ -153,7 +165,7 @@ class Recipe {
 
     /**
      * Get the steps for the recipe.
-     * @returns {string[]} The steps for the recipe.
+     * @returns {Steps[]} The steps for the recipe.
      * @example
      * const steps = recipe.steps();
      * console.log(steps);
@@ -164,7 +176,7 @@ class Recipe {
 
     /**
      * Get the allergies information for the recipe.
-     * @returns {string[]} The allergies information.
+     * @returns {Allergies[]} The allergies information.
      * @example
      * const allergies = recipe.allergies();
      * console.log(allergies);
@@ -175,24 +187,13 @@ class Recipe {
 
     /**
      * Get the diets information for the recipe.
-     * @returns {string[]} The diets information.
+     * @returns {Diets[]} The diets information.
      * @example
      * const diets = recipe.diets();
      * console.log(diets);
      */
     diets() {
         return this.recipeData.diets;
-    }
-
-    /**
-     * Get the star count of the recipe.
-     * @returns {number} The star count.
-     * @example
-     * const starCount = recipe.starCount();
-     * console.log(starCount);
-     */
-    starCount() {
-        return this.recipeData.starCount;
     }
 
     /**
@@ -219,6 +220,17 @@ class Recipe {
      */
     nutrition() {
         return this.recipeData.nutrition;
+    }
+
+    /**
+     * Get the star count of the recipe.
+     * @returns {number} The star count.
+     * @example
+     * const starCount = recipe.starCount();
+     * console.log(starCount);
+     */
+    starCount() {
+        return this.recipeData.starCount;
     }
 
     /**

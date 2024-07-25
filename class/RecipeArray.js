@@ -71,15 +71,7 @@ class RecipeArray extends Array {
     sortByDietsAmount(order = "asc") {
         return /** @type {RecipeArray} */ (
             this.sort((a, b) => {
-                const aItem =
-                    a.diets().length == 1 && a.diets()[0].trim() === ""
-                        ? 0
-                        : a.diets().length;
-                const bItem =
-                    b.diets().length == 1 && b.diets()[0].trim() === ""
-                        ? 0
-                        : b.diets().length;
-                const comparison = aItem - bItem;
+                const comparison = a.diets().length - b.diets().length;
                 return order === "desc" ? -comparison : comparison;
             })
         );
@@ -93,15 +85,7 @@ class RecipeArray extends Array {
     sortByAllergiesAmount(order = "asc") {
         return /** @type {RecipeArray} */ (
             this.sort((a, b) => {
-                const aItem =
-                    a.allergies().length == 1 && a.allergies()[0].trim() === ""
-                        ? 0
-                        : a.allergies().length;
-                const bItem =
-                    b.allergies().length == 1 && b.allergies()[0].trim() === ""
-                        ? 0
-                        : b.allergies().length;
-                const comparison = aItem - bItem;
+                const comparison = a.allergies().length - b.allergies().length;
                 return order === "desc" ? -comparison : comparison;
             })
         );
