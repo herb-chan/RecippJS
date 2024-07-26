@@ -19,11 +19,21 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
     // Display nutrition information for a specific recipe
     console.log("\n=== Nutrition Information ===");
     console.log(
-        `Fat: ${recipe.nutrition().fat}, Carbs: ${
-            recipe.nutrition().carbs
-        }, Calories: ${recipe.nutrition().calories}, Protein: ${
-            recipe.nutrition().protein
-        }`
+        `${recipe.nutrition().fat.name}: ${recipe.nutrition().fat.amount}${
+            recipe.nutrition().fat.unit
+        } - ${recipe.nutrition().fat.percentageDailyNeeds}%, ${
+            recipe.nutrition().carbs.name
+        }: ${recipe.nutrition().carbs.amount}${
+            recipe.nutrition().carbs.unit
+        } - ${recipe.nutrition().carbs.percentageDailyNeeds}%, ${
+            recipe.nutrition().calories.name
+        }: ${recipe.nutrition().calories.amount}${
+            recipe.nutrition().calories.unit
+        } - ${recipe.nutrition().calories.percentageDailyNeeds}%, ${
+            recipe.nutrition().protein.name
+        }: ${recipe.nutrition().protein.amount}${
+            recipe.nutrition().protein.unit
+        } - ${recipe.nutrition().protein.percentageDailyNeeds}%`
     );
 
     // Display ingredients for a specific recipe

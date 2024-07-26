@@ -4,23 +4,34 @@
  */
 class Recipe {
     /**
-     * @typedef {Object} Diets
-     */
-
-    /**
-     * @typedef {Object} Allergies
-     */
-
-    /**
-     * @typedef {Object} Steps
+     * @typedef {Object} NutritionElement
+     * @property {string} name The name of the nutritional element.
+     * @property {number} amount The amount of the nutritional element.
+     * @property {string} unit The unit of the nutritional element (e.g., "g", "kcal").
+     * @property {number} percentageDailyNeeds The percentage of daily needs for the nutritional element.
      */
 
     /**
      * @typedef {Object} Nutrition
-     * @property {number} calories The number of calories.
-     * @property {string} protein The amount of protein.
-     * @property {string} fat The amount of fat.
-     * @property {string} carbs The amount of carbohydrates.
+     * @property {NutritionElement} calories The calories information.
+     * @property {NutritionElement} fat The fat information.
+     * @property {NutritionElement} carbs The carbohydrates information.
+     * @property {NutritionElement} protein The protein information.
+     */
+
+    /**
+     * @typedef {Object} Diets
+     * @property {string} dietType The type of diet (e.g., vegan, keto).
+     */
+
+    /**
+     * @typedef {Object} Allergies
+     * @property {string} allergen The allergen (e.g., peanuts, dairy).
+     */
+
+    /**
+     * @typedef {Object} Steps
+     * @property {string} step The step in the preparation process.
      */
 
     /**
@@ -68,13 +79,13 @@ class Recipe {
      *     { name: "Spaghetti", quantity: "200g" },
      *     { name: "Eggs", quantity: "2" },
      *     { name: "Pancetta", quantity: "100g" },
-     *     { name: "Parmesan Cheese", quantity: "50g" },
+     *     { name: "Parmesan Cheese", quantity: "50g" }
      *   ],
      *   nutrition: {
-     *     calories: 500,
-     *     protein: "20g",
-     *     fat: "25g",
-     *     carbs: "50g"
+     *     calories: { amount: 500, unit: "kcal", percentageDailyNeeds: 25 },
+     *     fat: { amount: 20, unit: "g", percentageDailyNeeds: 31 },
+     *     carbs: { amount: 60, unit: "g", percentageDailyNeeds: 20 },
+     *     protein: { amount: 20, unit: "g", percentageDailyNeeds: 40 }
      *   },
      *   starCount: 0,
      *   createdAt: new Date(),
@@ -214,9 +225,7 @@ class Recipe {
      * @returns {Nutrition} The nutrition information.
      * @example
      * const nutrition = recipe.nutrition();
-     * console.log(nutrition.fat);
-     * console.log(nutrition.carbs);
-     * console.log(nutrition.protein);
+     * console.log(nutrition.calories.amount, nutrition.fat.amount, nutrition.carbs.amount, nutrition.protein.amount);
      */
     nutrition() {
         return this.recipeData.nutrition;
