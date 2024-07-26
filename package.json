@@ -1,6 +1,6 @@
 {
     "name": "recipp-js",
-    "version": "1.0.13",
+    "version": "1.1.0",
     "main": "index.js",
     "description": "An official API wrapper for Recipp API",
     "scripts": {

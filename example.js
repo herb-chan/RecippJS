@@ -16,6 +16,15 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
         `Title: ${recipe.title()}, Preparation Time: ${recipe.preparationTime()} minutes`
     );
 
+    // Get recipes by ingredients
+    console.log("\n=== Get Recipe by Ingredients ===");
+    const recipes_by_ingredients = await Recipp.searchByIngredients(["dough"]);
+    recipes_by_ingredients.forEach((recipe) => {
+        console.log(
+            `Title: ${recipe.title()}, Preparation Time: ${recipe.preparationTime()} minutes`
+        );
+    });
+
     // Display nutrition information for a specific recipe
     console.log("\n=== Nutrition Information ===");
     console.log(
