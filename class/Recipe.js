@@ -31,22 +31,22 @@ class Recipe {
 
     /**
      * Creates a new Recipe instance.
-     * @param {Object} recipeData - The data for the recipe.
-     * @param {number} recipeData.id - The unique ID of the recipe.
-     * @param {string} recipeData.title - The title of the recipe.
-     * @param {string} recipeData.description - A description of the recipe.
-     * @param {string} recipeData.imagePath - The file path or URL to the recipe image.
-     * @param {number} recipeData.prepTime - The preparation time in minutes.
-     * @param {number} recipeData.servingSize - The number of servings the recipe makes.
-     * @param {string} recipeData.category - The category or type of the recipe (e.g., dessert, main course).
-     * @param {Steps[]} recipeData.steps - The steps required to prepare the recipe.
-     * @param {Allergies[]} recipeData.allergies - A list of allergies that the recipe may contain.
-     * @param {Diets[]} recipeData.diets - A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
-     * @param {Ingredient[]} recipeData.ingredients - A list of ingredients with quantities.
-     * @param {Nutrition} recipeData.nutrition - Nutritional information.
-     * @param {number} recipeData.starCount - The number of stars the recipe has received.
-     * @param {Date} recipeData.createdAt - The date when the recipe was created.
-     * @param {Date} recipeData.updatedAt - The date when the recipe was last updated.
+     * @param {Object} recipeData The data for the recipe.
+     * @param {number} recipeData.id The unique ID of the recipe.
+     * @param {string} recipeData.title The title of the recipe.
+     * @param {string} recipeData.description A description of the recipe.
+     * @param {string} recipeData.imagePath The file path or URL to the recipe image.
+     * @param {number} recipeData.prepTime The preparation time in minutes.
+     * @param {number} recipeData.servingSize The number of servings the recipe makes.
+     * @param {string} recipeData.category The category or type of the recipe (e.g., dessert, main course).
+     * @param {Steps[]} recipeData.steps The steps required to prepare the recipe.
+     * @param {Allergies[]} recipeData.allergies A list of allergies that the recipe may contain.
+     * @param {Diets[]} recipeData.diets A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
+     * @param {Ingredient[]} recipeData.ingredients A list of ingredients with quantities.
+     * @param {Nutrition} recipeData.nutrition Nutritional information.
+     * @param {number} recipeData.starCount The number of stars the recipe has received.
+     * @param {Date} recipeData.createdAt The date when the recipe was created.
+     * @param {Date} recipeData.updatedAt The date when the recipe was last updated.
      * @example
      * const recipeData = {
      *   id: 1,

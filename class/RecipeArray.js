@@ -8,7 +8,7 @@ const Recipe = require("./Recipe");
 class RecipeArray extends Array {
     /**
      * Sort recipes by serving size.
-     * @param {string} [order='asc'] - The order to sort ('asc' for ascending, 'desc' for descending).
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByServingSize(order = "asc") {
@@ -22,7 +22,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by preparation time.
-     * @param {string} [order='asc'] - The order to sort ('asc' for ascending, 'desc' for descending).
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByPreparationTime(order = "asc") {
@@ -36,7 +36,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by star count.
-     * @param {string} [order='asc'] - The order to sort ('asc' for ascending, 'desc' for descending).
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByStarCount(order = "asc") {
@@ -50,7 +50,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by the amount of ingredients.
-     * @param {string} [order='asc'] - The order to sort ('asc' for ascending, 'desc' for descending).
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByIngredientsAmount(order = "asc") {
@@ -65,7 +65,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by the amount of diets they are suitable for.
-     * @param {string} [order='asc']
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByDietsAmount(order = "asc") {
@@ -79,7 +79,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by the amount of allergies they might cause.
-     * @param {string} [order='asc']
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByAllergiesAmount(order = "asc") {
@@ -93,7 +93,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by the amount of calories they have.
-     * @param {string} [order='asc']
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByCaloriesAmount(order = "asc") {
@@ -108,7 +108,7 @@ class RecipeArray extends Array {
 
     /**
      * Sort recipes by the amount of steps they have.
-     * @param {string} [order='asc']
+     * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
     sortByStepsAmount(order = "asc") {

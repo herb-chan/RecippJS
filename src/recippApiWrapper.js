@@ -1,15 +1,15 @@
 const axios = require("axios");
 const Recipe = require("../class/Recipe");
-const RecipeArray = require("../class/RecipeArray"); // Import the custom array class
+const RecipeArray = require("../class/RecipeArray");
 
 /**
- * A wrapper for the Recipp API.
+ * Wrapper for interacting with the Recipp API.
  * @class
  */
 class RecippApiWrapper {
     /**
      * Creates an instance of RecippApiWrapper.
-     * @param {string} baseURL - The base URL of the API.
+     * @param {string} baseURL The base URL of the API.
      * @example
      * const Recipp = new RecippApiWrapper("http://localhost:3000");
      */
@@ -18,13 +18,14 @@ class RecippApiWrapper {
     }
 
     /**
-     * Makes a request to the API.
+     * Makes an API request.
      * @async
-     * @param {string} method - The HTTP method.
-     * @param {string} endpoint - The API endpoint.
-     * @param {Object} [params={}] - The query parameters.
-     * @param {Object} [data={}] - The request body.
+     * @param {string} method The HTTP method.
+     * @param {string} endpoint The API endpoint.
+     * @param {Object} [params={}] The query parameters.
+     * @param {Object} [data={}] The request body.
      * @returns {Promise<Object>} The response data.
+     * @throws {Error} If the request fails.
      * @example
      * const data = await Recipp.request("get", "/recipes");
      * console.log(data);
@@ -44,8 +45,8 @@ class RecippApiWrapper {
     }
 
     /**
-     * Handles errors from the API requests.
-     * @param {Error} error - The error object.
+     * Handles errors from API requests.
+     * @param {Error} error The error object.
      * @example
      * try {
      *     const data = await Recipp.request("get", "/invalid-endpoint");
@@ -84,7 +85,7 @@ class RecippApiWrapper {
     /**
      * Retrieves a recipe by its ID.
      * @async
-     * @param {number} id - The recipe ID.
+     * @param {number} id The recipe ID.
      * @returns {Promise<Recipe>} The recipe object.
      * @example
      * const recipe = await Recipp.getRecipeById(1);
@@ -98,7 +99,7 @@ class RecippApiWrapper {
     /**
      * Searches for recipes by a query.
      * @async
-     * @param {string} query - The search query.
+     * @param {string} query The search query.
      * @returns {Promise<RecipeArray>} A list of recipes that match the query.
      * @example
      * const searchResults = await Recipp.searchRecipes("Chicken");
@@ -114,15 +115,9 @@ class RecippApiWrapper {
     }
 
     /**
-     * @typedef {Object} StarRecipeResponse
-     * @property {string} message A success message indicating the recipe has been starred.
-     * @property {number} starCount The updated number of stars for the recipe.
-     */
-
-    /**
      * Stars a recipe by its ID.
      * @async
-     * @param {number} id - The recipe ID.
+     * @param {number} id The recipe ID.
      * @returns {Promise<StarRecipeResponse>} The response containing a success message and the updated star count.
      * @throws {Error} If the request fails.
      * @example
