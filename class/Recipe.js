@@ -25,7 +25,7 @@ class Recipe {
      */
 
     /**
-     * @typedef {Object} Allergies
+     * @typedef {Object} Intolerances
      * @property {string} allergen The allergen (e.g., peanuts, dairy).
      */
 
@@ -46,14 +46,16 @@ class Recipe {
      * @param {number} recipeData.id The unique ID of the recipe.
      * @param {string} recipeData.title The title of the recipe.
      * @param {string} recipeData.description A description of the recipe.
-     * @param {string} recipeData.imagePath The file path or URL to the recipe image.
-     * @param {number} recipeData.prepTime The preparation time in minutes.
+     * @param {string} recipeData.image The file path or URL to the recipe image.
+     * @param {number} recipeData.preparationTime The preparation time in minutes.
      * @param {number} recipeData.servingSize The number of servings the recipe makes.
-     * @param {string} recipeData.category The category or type of the recipe (e.g., dessert, main course).
+     * @param {string} recipeData.cuisine The cuisine or type of the recipe (e.g., Chinese, Italian).
+     * @param {string} recipeData.type The type of recipe (e.g., main course, dessert).
      * @param {Steps[]} recipeData.steps The steps required to prepare the recipe.
-     * @param {Allergies[]} recipeData.allergies A list of allergies that the recipe may contain.
+     * @param {Intolerances[]} recipeData.intolerances A list of intolerances that the recipe may contain.
      * @param {Diets[]} recipeData.diets A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
      * @param {Ingredient[]} recipeData.ingredients A list of ingredients with quantities.
+     * @param {string[]} recipeData.equipment A list of equipment needed for the recipe.
      * @param {Nutrition} recipeData.nutrition Nutritional information.
      * @param {number} recipeData.starCount The number of stars the recipe has received.
      * @param {Date} recipeData.createdAt The date when the recipe was created.
@@ -66,14 +68,15 @@ class Recipe {
      *   imagePath: "assets/images/spaghetti_carbonara.jpg",
      *   prepTime: 20,
      *   servingSize: 2,
-     *   category: "Italian",
+     *   cuisine: "Italian",
+     *   type: "Main Course",
      *   steps: [
      *     "Boil the pasta.",
      *     "Cook the pancetta.",
      *     "Mix eggs and cheese.",
      *     "Combine pasta with pancetta and egg mixture."
      *   ],
-     *   allergies: ["Eggs", "Dairy"],
+     *   intolerances: ["Eggs", "Dairy"],
      *   diets: ["Vegetarian"],
      *   ingredients: [
      *     { name: "Spaghetti", quantity: "200g" },
@@ -81,11 +84,12 @@ class Recipe {
      *     { name: "Pancetta", quantity: "100g" },
      *     { name: "Parmesan Cheese", quantity: "50g" }
      *   ],
+     *   equipment: ["Pot", "Pan", "Mixing Bowl"],
      *   nutrition: {
-     *     calories: { amount: 500, unit: "kcal", percentageDailyNeeds: 25 },
-     *     fat: { amount: 20, unit: "g", percentageDailyNeeds: 31 },
-     *     carbs: { amount: 60, unit: "g", percentageDailyNeeds: 20 },
-     *     protein: { amount: 20, unit: "g", percentageDailyNeeds: 40 }
+     *     calories: { name: "Calories", amount: 500, unit: "kcal", percentageDailyNeeds: 25 },
+     *     fat: { name: "Fat", amount: 20, unit: "g", percentageDailyNeeds: 31 },
+     *     carbs: { name: "Carbohydrates", amount: 60, unit: "g", percentageDailyNeeds: 20 },
+     *     protein: { name: "Protein", amount: 20, unit: "g", percentageDailyNeeds: 40 }
      *   },
      *   starCount: 0,
      *   createdAt: new Date(),
@@ -138,7 +142,7 @@ class Recipe {
      * console.log(image);
      */
     image() {
-        return this.recipeData.imagePath;
+        return this.recipeData.image;
     }
 
     /**
@@ -149,7 +153,7 @@ class Recipe {
      * console.log(prepTime);
      */
     preparationTime() {
-        return this.recipeData.prepTime;
+        return this.recipeData.preparationTime;
     }
 
     /**
@@ -164,14 +168,25 @@ class Recipe {
     }
 
     /**
-     * Get the category of the recipe.
-     * @returns {string} The recipe category.
+     * Get the cuisine of the recipe.
+     * @returns {string} The recipe cuisine.
      * @example
-     * const category = recipe.category();
-     * console.log(category);
+     * const cuisine = recipe.cuisine();
+     * console.log(cuisine);
      */
-    category() {
-        return this.recipeData.category;
+    cuisine() {
+        return this.recipeData.cuisine;
+    }
+
+    /**
+     * Get the type of the recipe.
+     * @returns {string} The recipe type.
+     * @example
+     * const type = recipe.type();
+     * console.log(type);
+     */
+    type() {
+        return this.recipeData.type;
     }
 
     /**
@@ -186,14 +201,14 @@ class Recipe {
     }
 
     /**
-     * Get the allergies information for the recipe.
-     * @returns {Allergies[]} The allergies information.
+     * Get the intolerances information for the recipe.
+     * @returns {Intolerances[]} The intolerances information.
      * @example
-     * const allergies = recipe.allergies();
-     * console.log(allergies);
+     * const intolerances = recipe.intolerances();
+     * console.log(intolerances);
      */
-    allergies() {
-        return this.recipeData.allergies;
+    intolerances() {
+        return this.recipeData.intolerances;
     }
 
     /**
@@ -218,6 +233,17 @@ class Recipe {
      */
     ingredients() {
         return this.recipeData.ingredients;
+    }
+
+    /**
+     * Get the equipment for the recipe.
+     * @returns {string[]} The equipment.
+     * @example
+     * const equipment = recipe.equipment();
+     * console.log(equipment);
+     */
+    equipment() {
+        return this.recipeData.equipment;
     }
 
     /**

@@ -136,6 +136,27 @@ class RecippApiWrapper {
     }
 
     /**
+     * Searches for recipes by excluded ingredients.
+     * @async
+     * @param {string[]} ingredients The ingredients to search for.
+     * @returns {Promise<RecipeArray>} A list of recipes that aren't containing specified ingredients.
+     * @example
+     * const recipes = await Recipp.searchByIngredients(["cheese", "dough"]);
+     * recipes.forEach(recipe => {
+     *     console.log(recipe.title());
+     * });
+     */
+    async searchByExcludedIngredients(ingredients) {
+        const query = ingredients.join(",");
+        const data = await this.request("get", "/searchByExcludedIngredients", {
+            ingredients: query,
+        });
+        return new RecipeArray(
+            ...data.map((recipeData) => new Recipe(recipeData))
+        );
+    }
+
+    /**
      * Stars a recipe by its ID.
      * @async
      * @param {number} id The recipe ID.

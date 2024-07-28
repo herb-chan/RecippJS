@@ -53,6 +53,12 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
         );
     });
 
+    // Display equipment for a specific recipe
+    console.log("\n=== Equipment ===");
+    recipe.equipment().forEach((item) => {
+        console.log(`Equipment: ${item}`);
+    });
+
     // Search for recipes
     console.log("\n=== Search Recipes ===");
     const searchResults = await Recipp.searchRecipes("Chicken");
@@ -103,13 +109,13 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
         );
     });
 
-    // Sort recipes by the amount of allergies they might cause
-    console.log("\n=== Sorted by the Amount of Allergies ===");
-    allRecipes.sortByAllergiesAmount();
+    // Sort recipes by the amount of intolerances they might cause
+    console.log("\n=== Sorted by the Amount of Intolerances ===");
+    allRecipes.sortByIntolerancesAmount();
     allRecipes.forEach((recipe) => {
         console.log(
-            `${recipe.title()} - Ingredients amount: ${
-                recipe.allergies().length
+            `${recipe.title()} - Intolerances amount: ${
+                recipe.intolerances().length
             }`
         );
     });

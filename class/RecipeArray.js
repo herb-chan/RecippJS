@@ -78,14 +78,15 @@ class RecipeArray extends Array {
     }
 
     /**
-     * Sort recipes by the amount of allergies they might cause.
+     * Sort recipes by the amount of intolerances they might cause.
      * @param {string} [order='asc'] The order to sort ('asc' for ascending, 'desc' for descending).
      * @returns {RecipeArray} The sorted array.
      */
-    sortByAllergiesAmount(order = "asc") {
+    sortByIntolerancesAmount(order = "asc") {
         return /** @type {RecipeArray} */ (
             this.sort((a, b) => {
-                const comparison = a.allergies().length - b.allergies().length;
+                const comparison =
+                    a.intolerances().length - b.intolerances().length;
                 return order === "desc" ? -comparison : comparison;
             })
         );
@@ -100,7 +101,8 @@ class RecipeArray extends Array {
         return /** @type {RecipeArray} */ (
             this.sort((a, b) => {
                 const comparison =
-                    a.nutrition().calories - b.nutrition().calories;
+                    a.nutrition().calories.amount -
+                    b.nutrition().calories.amount;
                 return order === "desc" ? -comparison : comparison;
             })
         );
