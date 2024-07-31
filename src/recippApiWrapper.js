@@ -204,20 +204,20 @@ class RecippApiWrapper {
         );
     }
 
-    // /**
-    //  * Stars a recipe by its ID.
-    //  * @async
-    //  * @param {number} id The recipe ID.
-    //  * @returns {Promise<StarRecipeResponse>} The response containing a success message and the updated star count.
-    //  * @throws {Error} If the request fails.
-    //  * @example
-    //  * const response = await Recipp.starRecipe(1);
-    //  * console.log(`Recipe 1 has ${response.starCount} stars.`);
-    //  */
-    // async starRecipe(id) {
-    //     const data = await this.request("post", `api/recipes/${id}/star`);
-    //     return data;
-    // }
+    /**
+     * Stars a recipe by its ID.
+     * @async
+     * @param {number} id The recipe ID.
+     * @returns {Promise<StarRecipeResponse>} The response containing a success message and the updated star count.
+     * @throws {Error} If the request fails.
+     * @example
+     * const response = await Recipp.starRecipe(1);
+     * console.log(`Recipe 1 has ${response.starCount} stars.`);
+     */
+    async starRecipe(id) {
+        const data = await this.request("post", `api/recipes/${id}/star`);
+        return data;
+    }
 }
 
 module.exports = RecippApiWrapper;
