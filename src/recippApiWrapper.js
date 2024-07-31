@@ -76,7 +76,7 @@ class RecippApiWrapper {
      * });
      */
     async getAllRecipes() {
-        const data = await this.request("get", "/recipes");
+        const data = await this.request("get", "api/recipes");
         return new RecipeArray(
             ...data.map((recipeData) => new Recipe(recipeData))
         );
@@ -92,7 +92,7 @@ class RecippApiWrapper {
      * console.log(recipe.title());
      */
     async getRecipeById(id) {
-        const data = await this.request("get", `/recipes/${id}`);
+        const data = await this.request("get", `api/recipes/${id}`);
         return new Recipe(data);
     }
 
@@ -108,7 +108,7 @@ class RecippApiWrapper {
      * });
      */
     async searchRecipes(query) {
-        const data = await this.request("get", `/search`, { q: query });
+        const data = await this.request("get", `api/search`, { q: query });
         return new RecipeArray(
             ...data.map((recipeData) => new Recipe(recipeData))
         );
@@ -127,7 +127,7 @@ class RecippApiWrapper {
      */
     async searchByIngredients(ingredients) {
         const query = ingredients.join(",");
-        const data = await this.request("get", "/searchByIngredients", {
+        const data = await this.request("get", "api/searchByIngredients", {
             ingredients: query,
         });
         return new RecipeArray(
@@ -141,35 +141,83 @@ class RecippApiWrapper {
      * @param {string[]} ingredients The ingredients to search for.
      * @returns {Promise<RecipeArray>} A list of recipes that aren't containing specified ingredients.
      * @example
-     * const recipes = await Recipp.searchByIngredients(["cheese", "dough"]);
+     * const recipes = await Recipp.searchByExcludedIngredients(["cheese", "dough"]);
      * recipes.forEach(recipe => {
      *     console.log(recipe.title());
      * });
      */
     async searchByExcludedIngredients(ingredients) {
         const query = ingredients.join(",");
-        const data = await this.request("get", "/searchByExcludedIngredients", {
-            ingredients: query,
-        });
+        const data = await this.request(
+            "get",
+            "api/searchByExcludedIngredients",
+            {
+                ingredients: query,
+            }
+        );
         return new RecipeArray(
             ...data.map((recipeData) => new Recipe(recipeData))
         );
     }
 
     /**
-     * Stars a recipe by its ID.
+     * Searches for recipes using a complex search query.
      * @async
-     * @param {number} id The recipe ID.
-     * @returns {Promise<StarRecipeResponse>} The response containing a success message and the updated star count.
-     * @throws {Error} If the request fails.
+     * @param {Object} query The search parameters.
+     * @param {string} [query.title] The title of the recipe.
+     * @param {string} [query.cuisine] The cuisine type.
+     * @param {string} [query.excludedCuisine] The cuisine type to exclude.
+     * @param {string[]} [query.diets] The diets to include.
+     * @param {string[]} [query.intolerances] The intolerances to exclude.
+     * @param {string[]} [query.equipment] The equipment to include.
+     * @param {string[]} [query.ingredients] The ingredients to include.
+     * @param {string[]} [query.excludedIngredients] The ingredients to exclude.
+     * @param {string} [query.type] The type of the recipe.
+     * @param {number} [query.maxPreparationTime] The maximum preparation time in minutes.
+     * @param {number} [query.minServings] The minimum number of servings.
+     * @param {number} [query.maxServings] The maximum number of servings.
+     * @param {number} [query.minCalories] The minimum number of calories.
+     * @param {number} [query.maxCalories] The maximum number of calories.
+     * @param {number} [query.minFat] The minimum amount of fat.
+     * @param {number} [query.maxFat] The maximum amount of fat.
+     * @param {number} [query.minCarbs] The minimum amount of carbohydrates.
+     * @param {number} [query.maxCarbs] The maximum amount of carbohydrates.
+     * @param {number} [query.minProtein] The minimum amount of protein.
+     * @param {number} [query.maxProtein] The maximum amount of protein.
+     * @returns {Promise<RecipeArray>} A list of recipes that match the query.
      * @example
-     * const response = await Recipp.starRecipe(1);
-     * console.log(`Recipe 1 has ${response.starCount} stars.`);
+     * const searchParams = {
+     *     title: "Pasta",
+     *     cuisine: "Italian",
+     *     diets: ["vegetarian"],
+     *     maxCalories: 500,
+     * };
+     * const recipes = await Recipp.complexSearch(searchParams);
+     * recipes.forEach(recipe => {
+     *     console.log(recipe.title());
+     * });
      */
-    async starRecipe(id) {
-        const data = await this.request("post", `/recipes/${id}/star`);
-        return data;
+    async complexSearch(query) {
+        const data = await this.request("get", "api/complexSearch", query);
+        return new RecipeArray(
+            ...data.map((recipeData) => new Recipe(recipeData))
+        );
     }
+
+    // /**
+    //  * Stars a recipe by its ID.
+    //  * @async
+    //  * @param {number} id The recipe ID.
+    //  * @returns {Promise<StarRecipeResponse>} The response containing a success message and the updated star count.
+    //  * @throws {Error} If the request fails.
+    //  * @example
+    //  * const response = await Recipp.starRecipe(1);
+    //  * console.log(`Recipe 1 has ${response.starCount} stars.`);
+    //  */
+    // async starRecipe(id) {
+    //     const data = await this.request("post", `api/recipes/${id}/star`);
+    //     return data;
+    // }
 }
 
 module.exports = RecippApiWrapper;

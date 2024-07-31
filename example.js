@@ -119,12 +119,6 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
             }`
         );
     });
-
-    // Star a recipe
-    console.log("\n=== Star a Recipe ===");
-    const starResponse = await Recipp.starRecipe(4);
-    console.log(starResponse.message);
-    console.log(`Recipe 4 now has ${starResponse.starCount} stars.`);
 })().catch((error) => {
     console.error("Error in API calls:", error);
 });
