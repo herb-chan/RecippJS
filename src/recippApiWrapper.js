@@ -173,6 +173,8 @@ class RecippApiWrapper {
      * @param {string[]} [query.ingredients] The ingredients to include.
      * @param {string[]} [query.excludedIngredients] The ingredients to exclude.
      * @param {string} [query.type] The type of the recipe.
+     * @param {number} [query.maxReadyInTime] The maximum ready time in minutes.
+     * @param {number} [query.maxCookingTime] The maximum cooking time in minutes.
      * @param {number} [query.maxPreparationTime] The maximum preparation time in minutes.
      * @param {number} [query.minServings] The minimum number of servings.
      * @param {number} [query.maxServings] The maximum number of servings.

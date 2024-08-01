@@ -20,17 +20,17 @@ class Recipe {
      */
 
     /**
-     * @typedef {Object} Diets
+     * @typedef {Object} Diet
      * @property {string} dietType The type of diet (e.g., vegan, keto).
      */
 
     /**
-     * @typedef {Object} Intolerances
+     * @typedef {Object} Intolerance
      * @property {string} allergen The allergen (e.g., peanuts, dairy).
      */
 
     /**
-     * @typedef {Object} Steps
+     * @typedef {Object} Step
      * @property {string} step The step in the preparation process.
      */
 
@@ -47,13 +47,15 @@ class Recipe {
      * @param {string} recipeData.title The title of the recipe.
      * @param {string} recipeData.description A description of the recipe.
      * @param {string} recipeData.image The file path or URL to the recipe image.
+     * @param {number} recipeData.readyInTime The total time required to prepare the recipe, including cooking and preparation time, in minutes.
+     * @param {number} recipeData.cookingTime The time required to cook the recipe in minutes.
      * @param {number} recipeData.preparationTime The preparation time in minutes.
      * @param {number} recipeData.servingSize The number of servings the recipe makes.
      * @param {string} recipeData.cuisine The cuisine or type of the recipe (e.g., Chinese, Italian).
      * @param {string} recipeData.type The type of recipe (e.g., main course, dessert).
-     * @param {Steps[]} recipeData.steps The steps required to prepare the recipe.
-     * @param {Intolerances[]} recipeData.intolerances A list of intolerances that the recipe may contain.
-     * @param {Diets[]} recipeData.diets A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
+     * @param {Step[]} recipeData.steps The steps required to prepare the recipe.
+     * @param {Intolerance[]} recipeData.intolerances A list of intolerances that the recipe may contain.
+     * @param {Diet[]} recipeData.diets A list of dietary considerations for the recipe (e.g., vegan, gluten-free).
      * @param {Ingredient[]} recipeData.ingredients A list of ingredients with quantities.
      * @param {string[]} recipeData.equipment A list of equipment needed for the recipe.
      * @param {Nutrition} recipeData.nutrition Nutritional information.
@@ -65,19 +67,21 @@ class Recipe {
      *   id: 1,
      *   title: "Spaghetti Carbonara",
      *   description: "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
-     *   imagePath: "assets/images/spaghetti_carbonara.jpg",
-     *   prepTime: 20,
+     *   image: "assets/images/spaghetti_carbonara.jpg",
+     *   readyInTime: 20,
+     *   cookingTime: 10,
+     *   preparationTime: 10,
      *   servingSize: 2,
      *   cuisine: "Italian",
      *   type: "Main Course",
      *   steps: [
-     *     "Boil the pasta.",
-     *     "Cook the pancetta.",
-     *     "Mix eggs and cheese.",
-     *     "Combine pasta with pancetta and egg mixture."
+     *     { step: "Boil the pasta." },
+     *     { step: "Cook the pancetta." },
+     *     { step: "Mix eggs and cheese." },
+     *     { step: "Combine pasta with pancetta and egg mixture." }
      *   ],
-     *   intolerances: ["Eggs", "Dairy"],
-     *   diets: ["Vegetarian"],
+     *   intolerances: ["Eggs"]
+     *   diets: ["Vegan"],
      *   ingredients: [
      *     { name: "Spaghetti", quantity: "200g" },
      *     { name: "Eggs", quantity: "2" },
@@ -146,6 +150,28 @@ class Recipe {
     }
 
     /**
+     * Get the total time required to prepare the recipe, including cooking and preparation time, in minutes.
+     * @returns {number} The total ready-in time.
+     * @example
+     * const readyInTime = recipe.readyInTime();
+     * console.log(readyInTime);
+     */
+    readyInTime() {
+        return this.recipeData.readyInTime;
+    }
+
+    /**
+     * Get the cooking time of the recipe.
+     * @returns {number} The cooking time in minutes.
+     * @example
+     * const cookingTime = recipe.cookingTime();
+     * console.log(cookingTime);
+     */
+    cookingTime() {
+        return this.recipeData.cookingTime;
+    }
+
+    /**
      * Get the preparation time of the recipe.
      * @returns {number} The preparation time in minutes.
      * @example
@@ -163,7 +189,7 @@ class Recipe {
      * const servings = recipe.servings();
      * console.log(servings);
      */
-    servings() {
+    servingSize() {
         return this.recipeData.servingSize;
     }
 
@@ -191,7 +217,7 @@ class Recipe {
 
     /**
      * Get the steps for the recipe.
-     * @returns {Steps[]} The steps for the recipe.
+     * @returns {Step[]} The steps for the recipe.
      * @example
      * const steps = recipe.steps();
      * console.log(steps);
@@ -202,7 +228,7 @@ class Recipe {
 
     /**
      * Get the intolerances information for the recipe.
-     * @returns {Intolerances[]} The intolerances information.
+     * @returns {Intolerance[]} The intolerances information.
      * @example
      * const intolerances = recipe.intolerances();
      * console.log(intolerances);
@@ -213,7 +239,7 @@ class Recipe {
 
     /**
      * Get the diets information for the recipe.
-     * @returns {Diets[]} The diets information.
+     * @returns {Diet[]} The diets information.
      * @example
      * const diets = recipe.diets();
      * console.log(diets);

@@ -14,7 +14,7 @@ class RecipeArray extends Array {
     sortByServingSize(order = "asc") {
         return /** @type {RecipeArray} */ (
             this.sort((a, b) => {
-                const comparison = a.servings() - b.servings();
+                const comparison = a.servingSize() - b.servingSize();
                 return order === "desc" ? -comparison : comparison;
             })
         );

@@ -70,7 +70,9 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
     console.log("\n=== Sorted by Serving Size ===");
     allRecipes.sortByServingSize();
     allRecipes.forEach((recipe) => {
-        console.log(`${recipe.title()} - Serving Size: ${recipe.servings()}`);
+        console.log(
+            `${recipe.title()} - Serving Size: ${recipe.servingSize()}`
+        );
     });
 
     // Sort search results by preparation time
