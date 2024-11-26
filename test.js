@@ -2,14 +2,25 @@ const Recipe = require("./class/Recipe");
 const RecippApiWrapper = require("./src/recippApiWrapper");
 const Recipp = new RecippApiWrapper("http://localhost:3000");
 
+const testParams = {
+    cuisine: "Italian",
+    maxCalories: 500,
+    maxReadyInTime: 29,
+};
+
+// Perform the test
 (async () => {
-    const recipe = await Recipp.getRecipeById(1);
-    const recipes = await Recipp.getAllRecipes();
+    const result = await Recipp.complexSearch(testParams);
+    console.log(result);
+})();
+
+(async () => {
+    // const recipe = await Recipp.getRecipeById(1);
     // console.log(
-    //     recipe.nutrition().fat,
-    //     recipe.nutrition().carbs,
-    //     recipe.nutrition().calories,
-    //     recipe.nutrition().protein
+    //     recipe.nutrition().fat.name,
+    //     recipe.nutrition().carbs.name,
+    //     recipe.nutrition().calories.name,
+    //     recipe.nutrition().protein.name
     // );
     // console.log(recipe.ingredients().length);
     // recipe.ingredients().forEach((ingredient) => {
@@ -43,13 +54,13 @@ const Recipp = new RecippApiWrapper("http://localhost:3000");
     //     );
     // });
     // console.log(recipe.nutrition().calories.name);
-    const recipes_by_ingredient = await Recipp.searchByExcludedIngredients([
-        "dough",
-        "rice",
-    ]);
-    recipes_by_ingredient.forEach((recipe) => {
-        console.log(recipe.title());
-    });
+    // const recipes_by_ingredient = await Recipp.searchByExcludedIngredients([
+    //     "dough",
+    //     "rice",
+    // ]);
+    // recipes_by_ingredient.forEach((recipe) => {
+    //     console.log(recipe.title());
+    // });
 })().catch((error) => {
     console.error("Error in API calls:", error);
 });
